@@ -1,0 +1,7 @@
+export { default as AuthLogin } from "./AuthLogin"
+export { default as AuthSignup } from "./AuthSignup"
+export { default as AuthLogout } from "./AuthLogout"
+export { default as Dashboard } from "./Dashboard"
+export { default as PasswordReset } from "./PasswordReset"
+export { default as Delete } from "./Delete"
+export { default as AssignError } from "./AssignErr"
