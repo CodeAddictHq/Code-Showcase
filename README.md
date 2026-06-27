@@ -1,80 +1,63 @@
-# Portfolio & Code Sharing Platform
+# ⚠️ Legacy Version (Initial Prototype)
 
-> A personal space to share who I am, what I build, and the code I write along the way.
+> This is the earliest version of the project, built during the initial learning phase.
 
-A full-stack web application — part portfolio, part code blog. Visitors can browse projects, read and react to published code snippets, and leave comments. Everything on the site is managed through a custom admin panel without touching the source code.
-
-Built with **React** and **Django REST Framework** as a hands-on learning project.
+This branch represents the **first working prototype** of the Portfolio & Code Sharing Platform. At the time of development, the focus was purely on making the system functional rather than production-ready, scalable, or fully optimized.
 
 ---
 
-## What it does
+## 🧠 Context
 
-- **Portfolio** — showcases personal projects
-- **Code sharing** — publish scripts by category (Python, JavaScript, HTML & CSS, etc.) in a blog-style feed
-- **Reactions & comments** — visitors can react (Like, Love, Dislike, Angry) and comment on entries
-- **Dynamic content** — most site text is managed from the admin panel via slugs, no redeployment needed
-- **Authentication** — user registration, login, and session-based auth
+When this version was built:
 
----
-
-## Tech Stack
-
-| Layer    | Technology                                                  |
-|----------|-------------------------------------------------------------|
-| Frontend | React (Vite), React Router DOM, Lucide React, Plain CSS     |
-| Backend  | Django, Django REST Framework                               |
-| Database | SQLite3                                                     |
+- I only had a basic understanding of **session-based authentication**
+- I had very limited knowledge of **production-grade architecture**
+- The main goal was to create a **working full-stack model**, not an optimized system
+- Many real-world concerns like scalability, security hardening, and deployment strategy were not fully considered
 
 ---
 
-## Getting Started
+## ⚙️ Key Characteristics of This Version
 
-**Prerequisites:** Python 3.x, Node.js & npm
-
-### Backend
-
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
-```
-
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend → `http://localhost:5173`  
-Backend API → `http://localhost:8000`
+- Built using **session-based authentication**
+- Works properly only in **localhost / development environment**
+- Not production-ready due to **CSRF and cross-origin limitations**
+- Basic implementation without advanced optimization or architecture planning
+- Includes early UI features such as loading animations, which are relatively unpolished in this version
 
 ---
 
-## Content Management
+## 🚧 Known Limitations
 
-Site text is slug-based and editable from the Django Admin Panel (`/admin`). Update a content entry by slug and it reflects on the frontend immediately — no code change needed.
-
----
-
-## Auth & Deployment Notes
-
-Session-based authentication works well locally. In production with a separate React frontend and Django backend on different origins, cross-origin cookie handling requires extra configuration (CORS headers, `SameSite`/`Secure` flags, `credentials: 'include'`).
-
-This was handled for this project, but future projects will use **JWT-based auth** to keep cross-origin deployments simpler.
+- ❌ Session auth causes **CSRF-related issues in production setups**
+- ❌ Not suitable for separate frontend/backend deployment without additional configuration
+- ❌ Limited security and scalability considerations
+- ❌ UI/UX elements are in early, rough state
+- ❌ Architecture is not optimized for real-world production use
 
 ---
 
-## Purpose
+## 🔄 Recommendation
 
-Built to learn full-stack development in practice — React architecture, DRF API design, authentication, database modeling, and the real-world challenges of deploying an SPA with a separate backend.
+It is recommended to explore the **latest version (main branch)** instead of this one.
+
+The latest version includes:
+
+- Improved authentication approach (more production-friendly)
+- Better architecture and structure
+- Fixed cross-origin and deployment-related issues
+- Enhanced UI and overall stability
 
 ---
 
-*Personal and educational use.*
+## 📌 Purpose of This Branch
+
+This version is kept for:
+
+- Learning reference
+- Tracking early development progress
+- Understanding the evolution of the project from prototype → production-ready system
+
+---
+
+*This is a developmental prototype, not intended for production use.*
