@@ -101,3 +101,66 @@ h2 { font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 400; margin-bottom: 1.5
   .card:hover, .iconLink:hover { border-color: var(--border); color: var(--ink); }
   .btnFill:hover { background: var(--accent); border-color: var(--accent); }
 }
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  background: var(--bg);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.4rem 1.4rem 0;
+}
+
+.cardIndex {
+  font-size: .75rem;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+
+.thumb {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 9px;
+  background: rgba(204, 85, 0, 0.08);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, color .2s;
+}
+.card:hover .thumb { background: var(--accent); color: #fff; }
+
+.cardBody { padding: 1rem 1.4rem 0; }
+.cardBody h3 { font-size: 1rem; font-weight: 500; margin-bottom: .4rem; }
+.cardBody p  { font-size: .85rem; color: var(--muted); line-height: 1.55; }
+
+.cardFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.4rem 1.4rem;
+  font-size: .76rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cardArrow { transition: transform .2s; }
+.card:hover .cardArrow { transform: translateX(4px); }
+
+.sectionHead { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.75rem; flex-wrap: wrap; gap: .5rem; }
+.sectionHead h2 { margin-bottom: 0; }
+.sectionCount { font-size: .8rem; color: var(--muted); }
+
+@media (hover: none) and (pointer: coarse) {
+  .card:hover .thumb { background: rgba(204, 85, 0, 0.08); color: var(--accent); }
+  .card:hover .cardArrow { transform: none; }
+}

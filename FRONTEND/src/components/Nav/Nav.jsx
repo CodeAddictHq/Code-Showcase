@@ -21,7 +21,7 @@ function Nav(props) {
 
       <a href="/" className={styles.brand}>
         <Box size={20} />
-        <span>Code.Shower</span>
+        <span>ADIBS.CODE.WEEB</span>
       </a>
 
     <div className={styles.links}>

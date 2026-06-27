@@ -58,7 +58,7 @@ function Reason(props) {
     <div>
       <div className={styles.hero}>
         <div className={styles.eyebrow}>Why this exists</div>
-        <h1>Basically for (No specific reason)</h1>
+        <h1>For many reasons :)</h1>
 <p className={styles.sub}>  {introexpend ? introText.text : introText.text.slice(0, 120) + '...'}
 <button
   onClick={(e) => {
@@ -117,7 +117,7 @@ function Reason(props) {
             <div className={styles.stepIcon}><MousePointerClick size={24} /></div>
             <div className={styles.stepBody}>
               <div className={styles.stepNum}>02</div>
-              <h3>To Shp My Friends&Sorroundings</h3>
+              <h3>To Show My Friends&Sorroundings</h3>
 
 <p className={styles.about}>  {toshowexpend ? showText.text : showText.text.slice(0, 120) + '...'}
 <button
@@ -146,7 +146,7 @@ function Reason(props) {
             <div className={styles.stepIcon}><BookOpen size={24} /></div>
             <div className={styles.stepBody}>
               <div className={styles.stepNum}>03</div>
-              <h3>To Add a project in my resume</h3>
+              <h3>To Add at least 1 solid project in my resume</h3>
 <p className={styles.about}>  {realprojectexpend ? realProjectText.text : realProjectText.text.slice(0, 120) + '...'}
 <button
   onClick={(e) => {
@@ -174,7 +174,7 @@ function Reason(props) {
             <div className={styles.stepIcon}><Lightbulb size={24} /></div>
             <div className={styles.stepBody}>
               <div className={styles.stepNum}>05</div>
-              <h3>Extra...</h3>
+              <h3>Extra </h3>
 
 <p className={styles.about}>  {extraexpend ? extraText.text : extraText.text.slice(0, 120) + '...'}
 <button

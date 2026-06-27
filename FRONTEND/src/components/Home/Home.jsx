@@ -1,7 +1,15 @@
 import styles from "./Home.module.css"
-import { Code2, Globe, Wrench, ArrowRight, GitBranch, Mail } from "lucide-react"
-import {Link} from "react-router-dom"
+import {
+  Code2,
+  Globe,
+  Wrench,
+  ArrowRight,
+  GitBranch,
+  Mail,
+  Layers,
+} from "lucide-react";
 import {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 var SLUGS = {
   WELCOMENOTE:"welcome_note",
   WELCOMEINTRO:"welcome_intro"
@@ -73,39 +81,61 @@ function Home(props) {
         
         <a href="/about" className={styles.cardLink}>Full story <ArrowRight size={11} /></a>
       </section>
-      <section className={styles.section}>
-        <div className={styles.label}>What I have done</div>
-        <h2>A bit of my works</h2>
+<section className={styles.section}>
+  <div className={styles.label}>What I have done</div>
 
-          <div className={styles.grid}>
-          
-          <div className={styles.card}>
-            <div className={styles.thumb}><Code2 size={28} /></div>
-            <div className={styles.cardBody}>
-              <h3>Codes</h3>
-              <p>This shows my recent mini projects scripts etc etc </p>
-              <Link to="/projects" className={styles.cardLink}>view codes <ArrowRight size={11} /></Link>
-            </div>
-          </div>
-          <div className={styles.card}>
-            <div className={styles.thumb}><Globe size={28} /></div>
-            <div className={styles.cardBody}>
-              <h3>Contacts</h3>
-              <p>Heres my contacts</p>
-              <Link to="/contacts" className={styles.cardLink}>view  <ArrowRight size={11} /></Link>
-            </div>
-          </div>
-          <div className={styles.card}>
-            <div className={styles.thumb}><Globe size={28} /></div>
-            <div className={styles.cardBody}>
-              <h3>About This Web</h3>
-              <p>If you want tp know about this web , structure, buid tools etc here are they</p>
-              <Link to="/about" className={styles.cardLink}>view codes <ArrowRight size={11} /></Link>
-            </div>
-          </div>
-          </div>
-        
-      </section>
+  <div className={styles.sectionHead}>
+    <h2>A bit of my work</h2>
+    <span className={styles.sectionCount}>03 things</span>
+  </div>
+
+  <div className={styles.grid}>
+    <Link to="/projects" className={styles.card}>
+      <div className={styles.cardTop}>
+        <span className={styles.cardIndex}>01</span>
+        <span className={styles.thumb}><Code2 size={20} /></span>
+      </div>
+      <div className={styles.cardBody}>
+        <h3>Codes</h3>
+        <p>A handful of mini projects, scripts, and experiments.</p>
+      </div>
+      <div className={styles.cardFoot}>
+        <span>View codes</span>
+        <ArrowRight size={14} className={styles.cardArrow} />
+      </div>
+    </Link>
+
+    <Link to="/contacts" className={styles.card}>
+      <div className={styles.cardTop}>
+        <span className={styles.cardIndex}>02</span>
+        <span className={styles.thumb}><Mail size={20} /></span>
+      </div>
+      <div className={styles.cardBody}>
+        <h3>Contacts</h3>
+        <p>Ways to reach me, all in one place.</p>
+      </div>
+      <div className={styles.cardFoot}>
+        <span>View contacts</span>
+        <ArrowRight size={14} className={styles.cardArrow} />
+      </div>
+    </Link>
+
+    <Link to="/about" className={styles.card}>
+      <div className={styles.cardTop}>
+        <span className={styles.cardIndex}>03</span>
+        <span className={styles.thumb}><Layers size={20} /></span>
+      </div>
+      <div className={styles.cardBody}>
+        <h3>About This Web</h3>
+        <p>How this site is structured and built, tools included.</p>
+      </div>
+      <div className={styles.cardFoot}>
+        <span>View details</span>
+        <ArrowRight size={14} className={styles.cardArrow} />
+      </div>
+    </Link>
+  </div>
+</section>
 
 
       <section className={styles.section}>

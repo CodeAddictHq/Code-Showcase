@@ -118,7 +118,7 @@ export default function Contacts(props) {
           Email is where I'm most responsive. I try to reply within a day or two.
         </p>
         <div className={styles.cta}>
-          <a href="mailto:you@example.com" className={styles.btnFill}>
+          <a href="mailto:adibmd19801@gmail.com" className={styles.btnFill}>
             Send an email
           </a>
         </div>

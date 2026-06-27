@@ -63,9 +63,7 @@ function Goal(props) {
       <div className={styles.hero}>
         <div className={styles.eyebrow}>Goals</div>
         <h1>What I am after</h1>
-        <p className={styles.sub}>
-          {goalText.text}
-        </p>
+
 <p className={styles.sub}>  {introexpend ? goalText.text : goalText.text.slice(0, 120) + '...'}
 <button
   onClick={(e) => {

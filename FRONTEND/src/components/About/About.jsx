@@ -1,5 +1,5 @@
 import styles from "./About.module.css"
-import { User, MapPin, Coffee, ArrowRight } from "lucide-react"
+import { User, MapPin, Coffee, ArrowRight, FileText, Code2, Target, Mail } from "lucide-react"
 import {Link} from "react-router-dom"
 import {useState, useEffect} from "react"
 var SLUGS = {
@@ -42,51 +42,44 @@ function About(props) {
         <h2>Heres Everything</h2>
 
 
-        <div className={styles.bio}>
-          <Link className={styles.links} to="/about/reason">
-          <div className={styles.bioCard}>
-            <MapPin size={20} className={styles.icon} />
-            <div>
-                <h3>Reason to make this web</h3>
-              <p>If you want to know in detail why this website was created and what the main purpose behind building it is, you can click here to read more.</p>
-            </div>
-          </div>
-            </Link>
-          <Link className={styles.links} to="/about/how-it-works">
-          <div className={styles.bioCard}>
-            <MapPin size={20} className={styles.icon} />
-            <div>
-                <h3>How This Web Works</h3>
-              <p>If you are interested in knowing which programming languages, tools, and technologies were used to build this website, or how the development process was done step by step, you can click here for full details.
+        <div className={styles.bio}><Link className={styles.links} to="/about/reason">
+  <div className={styles.bioCard}>
+    <FileText size={20} className={styles.icon} />
+    <div>
+        <h3>Reason to make this web</h3>
+      <p>If you want to know in detail why this website was created and what the main purpose behind building it is, you can click here to read more.</p>
+    </div>
+  </div>
+</Link>
+<Link className={styles.links} to="/about/how-it-works">
+  <div className={styles.bioCard}>
+    <Code2 size={20} className={styles.icon} />
+    <div>
+        <h3>How This Web Works</h3>
+      <p>If you are interested in knowing which programming languages, tools, and technologies were used to build this website, or how the development process was done step by step, you can click here for full details.
 </p>
-            </div>
-          </div>
-            </Link>
-          <Link className={styles.links} to="/about/goal">
-          <div className={styles.bioCard}>
-            <MapPin size={20} className={styles.icon} />
-            <div>
-                <h3>My goal</h3>
-              <p>If you want to learn about my future goals, plans, and what I want to achieve in the coming days, you can click here to explore more.
+    </div>
+  </div>
+</Link>
+<Link className={styles.links} to="/about/goal">
+  <div className={styles.bioCard}>
+    <Target size={20} className={styles.icon} />
+    <div>
+        <h3>My goal</h3>
+      <p>If you want to learn about my future goals, plans, and what I want to achieve in the coming days, you can click here to explore more.
 </p>
-            </div>
-          </div>
-            </Link>
-          <Link className={styles.links} to="/contacts">
-          <div className={styles.bioCard}>
-            <MapPin size={20} className={styles.icon} />
-            <div>
-                <h3>All contacts</h3>
-              <p>If you need my contact details, you can find all the ways to reach me here.</p>
-            </div>
-          </div>
-            </Link>
-            
-            
-            
-
-
-        </div>
+    </div>
+  </div>
+</Link>
+<Link className={styles.links} to="/contacts">
+  <div className={styles.bioCard}>
+    <Mail size={20} className={styles.icon} />
+    <div>
+        <h3>All contacts</h3>
+      <p>If you need my contact details, you can find all the ways to reach me here.</p>
+    </div>
+  </div>
+</Link></div>
       </section>
 
       <section className={styles.section}>

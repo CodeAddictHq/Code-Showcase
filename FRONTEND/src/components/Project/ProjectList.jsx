@@ -43,11 +43,63 @@ function ProjectList(props) {
   }, [page, category])
   return (
     <div className={styles.wrapper}>
-      <div className={styles.hero}>
-        <div className={styles.eyebrow}>Category</div>
-        <h1 className={styles.title}>{msgs.title}</h1>
-        <p className={styles.sub}>{msgs.detail}</p>
+<div className={styles.wrapper}>
+  <div className={styles.div1}>
+    <div
+      className={styles.hero}
+      style={{
+        position: "relative",
+        animation: "heroFadeIn 0.6s ease-out",
+      }}
+    >
+      <div
+        className={styles.eyebrow}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "0.5rem",
+        }}
+      >
+        <span
+          style={{
+            width: "6px",
+            height: "6px",
+            borderRadius: "50%",
+            background: "var(--accent)",
+            display: "inline-block",
+          }}
+        />
+        Category
       </div>
+
+      <h1
+        className={styles.title}
+        style={{
+          letterSpacing: "-0.02em",
+        }}
+      >
+        {msgs.title}
+      </h1>
+
+      <p
+        className={styles.sub}
+        style={{
+          borderLeft: "2px solid var(--border)",
+          paddingLeft: "1rem",
+        }}
+      >
+        {msgs.detail}
+      </p>
+    </div>
+  </div>
+
+  <style>{`
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  `}</style>
+</div>
 
       <div className={styles.grid}>
         {codeCards}
