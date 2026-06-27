@@ -8,9 +8,9 @@ import {Projects, ProjectList, CommentEdit, ProjectCommentForm, ProjectDetailed}
 import { AuthLogin, AuthSignup, AuthLogout, Dashboard, PasswordReset, Delete, AssignError} from "./components/Auth"
 
 
-const textDomain = 'http://localhost:8000/api/text'
-const authDomain = 'http://localhost:8000/api/user'
-const codeDomain = 'http://localhost:8000/api/p'
+const textDomain = 'https://adibscodesapi.onrender.com/api/text'
+const authDomain = 'https://adibscodesapi.onrender.com/api/user'
+const codeDomain = 'https://adibscodesapi.onrender.com/api/p'
 
 
 
