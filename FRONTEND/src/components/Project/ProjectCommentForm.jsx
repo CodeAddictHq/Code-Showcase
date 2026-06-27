@@ -30,10 +30,10 @@ function ProjectCommentForm(props) {
       let res = await fetch(`${props.domain}/${codeData.slug}/c/add/`,
        {
     method: "POST",
-    credentials: "include",
+
     headers: {
       "Content-Type": "application/json",
-        "X-CSRFToken": props.getCookie("csrftoken"),
+            "Authorization": `Bearer ${localStorage.getItem("access")}`,
     },
     body: JSON.stringify({
       comment:comment

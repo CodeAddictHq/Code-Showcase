@@ -10,7 +10,7 @@ export default function PasswordReset(props) {
   const [msg, setMsg]=useState("Choose a new password for your account.")
   
   useEffect(() => {
-  fetch(`${props.domain}/csrf/`, { credentials: "include" });
+  
   
   async function loadUser(){
     let user = await props.userStatus()
@@ -24,6 +24,7 @@ export default function PasswordReset(props) {
   const [newPass2, setNewPass2] =useState("")
   
   function validateData(e){
+    setMsg("Processing ...")
     e.preventDefault()
     if (!oldPass||!newPass1||!newPass2){
       setMsg("Empty fields are not accepted")
@@ -31,14 +32,17 @@ export default function PasswordReset(props) {
       if (newPass1!= newPass2){
         setMsg("New passwords didn't matched")
       }else if(newPass1 == newPass2){
+        if (newPass1.length<4||newPass2<4){
+          setMsg("Pass can't be too small")
+        }else{
         async function resetPass(){
      let res = await fetch(`${props.domain}/reset_password/`, 
        {
     method: "POST",
-    credentials: "include",
+
     headers: {
+      "Authorization": `Bearer ${localStorage.getItem("access")}`,
       "Content-Type": "application/json",
-        "X-CSRFToken": props.getCookie("csrftoken"),
     },
     body: JSON.stringify({
       old_pass:oldPass,
@@ -50,6 +54,7 @@ export default function PasswordReset(props) {
           setPassChange(data.password_change)
         }
         resetPass()
+      }
       }
     }
   }
@@ -64,7 +69,7 @@ export default function PasswordReset(props) {
           <div className={styles.avatar}>✦</div>
           <div style={{ textAlign: "center" }}>
             <h2 className={styles.title} style={{ marginBottom: "0.5rem" }}>{msg}</h2>
-            <p className={styles.sub} style={{ marginBottom: "2rem" }}>{msg}</p>
+            <p className={styles.sub} style={{ marginBottom: "2rem" }}>You password has been changed successfully</p>
           </div>
           <div style={{ borderTop: "1px solid var(--border)", marginBottom: "1.75rem" }} />
           <div className={styles.btnGroup}>

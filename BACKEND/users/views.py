@@ -82,15 +82,15 @@ class ResetPass(APIView):
 
         user = authenticate(username=request.user.username, password=old_pass)
         if not user:
-            return Response({'msg': 'password didnt matched', 'password_change': False}, status=401)
+            return Response({'msg': 'WARNING:Password didnt matched', 'password_change': False}, status=401)
 
         user.set_password(new_pass)
         user.save()
-        tokens = get_tokens_for_user(user)
+
         return Response({
-            'msg': 'password changed successfully',
+            'msg': 'WARNING: Password changed !!',
             'password_change': True,
-            'tokens': tokens,
+
         })
 
 

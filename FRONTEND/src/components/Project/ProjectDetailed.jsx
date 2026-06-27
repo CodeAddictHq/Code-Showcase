@@ -62,10 +62,10 @@ function ProjectDetailed(props) {
     async function DelThis(){
     let delComment = await fetch(`${props.domain}/${slug}/c/del/${id}/`,        {
     method: "GET",
-    credentials: "include",
+    
     headers: {
       "Content-Type": "application/json",
-        "X-CSRFToken": props.getCookie("csrftoken"),
+      "Authorization": `Bearer ${localStorage.getItem("access")}`,
     }
   })
     let data = await delComment.json()
@@ -86,13 +86,13 @@ function ProjectDetailed(props) {
   
   function addReaction(reaction){
     async function AddReact(){
+      setReactMsg('Adding...')
       let req = await fetch(`${props.domain}/${slug}/addreact/`,
        {
     method: "POST",
-    credentials: "include",
     headers: {
       "Content-Type": "application/json",
-        "X-CSRFToken": props.getCookie("csrftoken"),
+      "Authorization": `Bearer ${localStorage.getItem("access")}`,
     },
     body: JSON.stringify({
       reaction:reaction

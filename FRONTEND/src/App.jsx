@@ -17,7 +17,7 @@ const codeDomain = 'http://localhost:8000/api/p'
 function getCookie(name) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
-  console.log(document.cookie)
+ // console.log(document.cookie)
   if (parts.length === 2) {
     let cookie = parts.pop().split(';').shift();
     console.log(cookie)
@@ -26,7 +26,7 @@ function getCookie(name) {
 }
 function App() {
   async function getText(slug){
-    console.log(document.cookie)
+  //  console.log(document.cookie)
     let res = await fetch(`${textDomain}/${slug}`)
     let data = await res.json()
     if (data.state=='exist'){
@@ -38,21 +38,56 @@ function App() {
   
   
   async function userStatus() {
-  const token = localStorage.getItem("access");
-  const response = await fetch(`${authDomain}/me`, {
+  let access = localStorage.getItem("access");
+
+  // First try with current access token
+  let response = await fetch(`${authDomain}/me`, {
     headers: {
-      "Authorization": `Bearer ${token}`,
-      "Content-Type": "application/json"
-    }
+      Authorization: `Bearer ${access}`,
+      "Content-Type": "application/json",
+    },
   });
-  const data = await response.json();
-    if (data.code =='token_not_valid') {
-      //Try refreashing token
-  return {data:data, status:false}
-      
-    } else {
-      return data
+
+  // Access token expired
+  if (response.status === 401) {
+    const refresh = localStorage.getItem("refresh");
+
+    const refreshResponse = await fetch(`${authDomain}/refresh/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        refresh: refresh,
+      }),
+    });
+    
+    // Refresh token invalid/expired
+    if (!refreshResponse.ok) {
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
+      return { status: false };
     }
+
+    const refreshData = await refreshResponse.json();
+
+    // Save new access token
+    localStorage.setItem("access", refreshData.access);
+
+    // Retry request with new access token
+    response = await fetch(`${authDomain}/me`, {
+      headers: {
+        Authorization: `Bearer ${refreshData.access}`,
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
+  if (!response.ok) {
+    return { status: false };
+  }
+
+  return await response.json();
 }
   return <>
       <Nav userStatus={userStatus} />

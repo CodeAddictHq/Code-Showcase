@@ -103,3 +103,72 @@ body { background: var(--bg); color: var(--ink); -webkit-font-smoothing: antiali
   align-items: center;
   justify-content: center;
 }
+.avatar {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: rgba(204, 85, 0, 0.1);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+}
+
+.card {
+  box-shadow: 0 1px 2px rgba(26,23,20,0.04), 0 10px 28px rgba(26,23,20,0.035);
+  animation: cardIn 0.3s ease both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.btnFill, .btnLine {
+  transition: background .2s, border-color .2s, color .2s, transform .15s;
+}
+
+.btnFill:hover { transform: translateY(-1px); }
+.btnLine:hover { transform: translateY(-1px); }
+
+@media (hover: none) and (pointer: coarse) {
+  .btnFill:hover, .btnLine:hover { transform: none; }
+}
+.noteCard { width: min(100%, 560px); }
+
+.noteTitleInput {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 0.4rem 0.05rem 0.75rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .2s;
+}
+.noteTitleInput::placeholder { color: var(--muted); font-weight: 400; }
+.noteTitleInput:focus { border-color: var(--accent); }
+
+.noteBody {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  padding: 1.1rem 0;
+  color: var(--ink);
+  outline: none;
+  resize: vertical;
+  min-height: 170px;
+  font-family: inherit;
+}
+.noteBody::placeholder { color: var(--muted); }
+
+.noteDivider {
+  border-top: 1px solid var(--border);
+  margin: 0.1rem 0 0.25rem;
+}

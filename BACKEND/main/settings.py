@@ -138,3 +138,10 @@ CSRF_TRUSTED_ORIGINS = [
     'https://adibscodes.onrender.com',
     'http://localhost:5173',
 ]
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(seconds=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=5),
+}

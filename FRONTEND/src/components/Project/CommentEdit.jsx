@@ -30,10 +30,10 @@ function CommentEdit(props) {
       let saveComment = await fetch(`${props.domain}/${slug}/c/edit/${id}`,
        {
     method: "POST",
-    credentials: "include",
+
     headers: {
       "Content-Type": "application/json",
-        "X-CSRFToken": props.getCookie("csrftoken"),
+      "Authorization": `Bearer ${localStorage.getItem("access")}`,
     },
     body: JSON.stringify({
       comment:newComment

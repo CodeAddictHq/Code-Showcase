@@ -17,13 +17,12 @@ function AuthDelete(props) {
       setMsg("Password field cannot be empty")
     }  else {
       async function deleteAccount() {
-        console.log(pass)
+        setMsg('Processing...')
         let res = await fetch(`${props.domain}/delete/`, {
           method: "POST",
-          credentials: "include",
           headers: {
             "Content-Type": "application/json",
-            "X-CSRFToken": props.getCookie("csrftoken"),
+      "Authorization": `Bearer ${localStorage.getItem("access")}`,
           },
           body: JSON.stringify({
             password: pass,

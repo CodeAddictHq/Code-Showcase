@@ -6,7 +6,7 @@ function AssignErr(props) {
   const [user, setUser] = useState({ status: null })
   const [title, setTitle] = useState("")
   const [note, setNote] = useState("")
-  const [message, setMessage] = useState("Leave a note or assign this error")
+  const [message, setMessage] = useState("Anything wrong, Found a bug, Wanna tell me somethong?     Write it down here ...")
   const [success, setSuccess] = useState(false)
   const [errState, setErrState] = useState(null)
   useEffect(() => {
@@ -18,6 +18,7 @@ function AssignErr(props) {
   }, [])
 
   function handleSubmit() {
+    setMessage("Processing...")
     if (!title||!note){
       setMessage('Empty fields are not accepted')
     }else if (title&&note){
@@ -26,10 +27,10 @@ function AssignErr(props) {
         let res = await fetch(`${props.domain}/addError/`, 
        {
     method: "POST",
-    credentials: "include",
+
     headers: {
       "Content-Type": "application/json",
-      "X-CSRFToken": props.getCookie("csrftoken"),
+      "Authorization": `Bearer ${localStorage.getItem("access")}`,
     },
     body: JSON.stringify({
       title: title,
@@ -98,46 +99,44 @@ function AssignErr(props) {
   }
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.card}>
-        <h2 className={styles.title}>Assign Error</h2>
-        <p className={styles.sub}>{message}</p>
-        <div className={styles.form}>
-          <div className={styles.field}>
-            <label className={styles.label}>Title</label>
-            <input
-              className={styles.input}
-              type="text"
-              placeholder="Error title..."
-              value={title}
-              onChange={(e) => {
-                setTitle(e.target.value)
-                setMessage("Leave a note or assign this error")
-              }}
-            />
-          </div>
-          <div className={styles.field}>
-            <label className={styles.label}>Note</label>
-            <textarea
-              className={styles.input}
-              rows="5"
-              placeholder="Write your note or assign this error here..."
-              value={note}
-              onChange={(e) => {
-                setNote(e.target.value)
-                setMessage("Leave a note or assign this error")
-              }}
-              style={{ resize: "vertical" }}
-            />
-          </div>
-          <div className={styles.btnGroup}>
-            <button onClick={handleSubmit} className={styles.btnFill}>Submit →</button>
-            <Link to="/" className={styles.btnLine}>Cancel</Link>
-          </div>
+  <div className={styles.wrapper}>
+    <div className={`${styles.card} ${styles.noteCard}`}>
+      <h2 className={styles.title}>Assign Error/Note</h2>
+      <p className={styles.sub}>{message}</p>
+
+      <div className={styles.form}>
+        <input
+          className={styles.noteTitleInput}
+          type="text"
+          placeholder="Title  "
+          value={title}
+          onChange={(e) => {
+            setTitle(e.target.value);
+            setMessage("Leave a note or assign this error");
+          }}
+        />
+
+        <div className={styles.noteDivider} />
+
+        <textarea
+          className={styles.noteBody}
+          rows="6"
+          placeholder="Describe it in your own words…"
+          value={note}
+          onChange={(e) => {
+            setNote(e.target.value);
+            setMessage("Leave a note or assign this error");
+          }}
+        />
+
+        <div className={styles.btnGroup}>
+          <button onClick={handleSubmit} className={styles.btnFill}>Submit →</button>
+          <Link to="/" className={styles.btnLine}>Cancel</Link>
         </div>
       </div>
     </div>
-  )
+  </div>
+);
 }
 
 export default AssignErr
