@@ -1,0 +1,103 @@
+:root {
+  --bg:          #FAF9F7;
+  --ink:         #1A1714;
+  --border:      #E8E3DC;
+  --muted:       #9C8E82;
+  --accent:      #CC5500;
+  --accent-dark: #A84400;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+/* ── HERO ── */
+.hero { padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 4vw, 2.5rem) clamp(2rem, 5vw, 4rem); max-width: 680px; }
+
+.eyebrow { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+
+h1 { font-size: clamp(2rem, 6vw, 4rem); font-weight: 400; line-height: 1.1; margin-bottom: 1.2rem; }
+
+h1 i { color: var(--accent); font-style: italic; }
+
+.sub  { color: var(--muted); line-height: 1.7; }
+
+.about { color: var(--muted); max-width: 520px; margin-bottom: 1.2rem; line-height: 1.7; font-size: .95rem; }
+
+/* ── BUTTONS (shared) ── */
+.btnFill, .btnLine {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .75rem 1.5rem;
+  border-radius: 4px;
+  font-size: .88rem;
+  text-decoration: none;
+  min-height: 48px;
+  transition: background .2s, border-color .2s, color .2s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.btnFill { background: var(--accent); color: #fff; border: 2px solid var(--accent); }
+.btnFill:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+
+.btnLine { background: transparent; color: var(--ink); border: 2px solid var(--border); }
+.btnLine:hover { border-color: var(--ink); }
+
+.cta { display: flex; gap: .8rem; align-items: center; flex-wrap: wrap; margin-top: 1.5rem; }
+
+/* ── SECTION ── */
+.section { padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 4vw, 2.5rem); border-top: 1px solid var(--border);;}
+
+h2 { font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 400; margin-bottom: 1.5rem; }
+
+.label { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
+
+/* ── GRID ── */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 1.5rem; }
+
+/* ── CARD ── */
+.card { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: border-color .2s; }
+.card:hover { border-color: var(--accent); }
+
+.thumb { padding: 1.5rem; background: var(--border); display: flex; align-items: center; justify-content: center; color: var(--accent); }
+
+.cardBody { padding: 1.2rem 1.4rem; }
+.cardBody h3 { font-size: 1rem; font-weight: 500; margin-bottom: .4rem; }
+.cardBody p  { font-size: .85rem; color: var(--muted); margin-bottom: 1rem; }
+
+.cardLink { display: inline-flex; align-items: center; gap: .3rem; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
+.cardLink:hover { text-decoration: underline; }
+
+/* ── CONNECT ── */
+.links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .5rem; }
+
+.iconLink {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .88rem;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: .4rem .75rem;
+  min-height: 40px;
+  transition: border-color .2s, color .2s;
+}
+.iconLink:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 480px) {
+  .grid  { grid-template-columns: 1fr; }
+  .cta   { flex-direction: column; }
+  .btnFill, .btnLine { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; } }
+
+@media (hover: none) and (pointer: coarse) {
+  .card:hover, .iconLink:hover { border-color: var(--border); color: var(--ink); }
+  .btnFill:hover { background: var(--accent); border-color: var(--accent); }
+}

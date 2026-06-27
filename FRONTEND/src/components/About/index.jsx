@@ -1,0 +1,5 @@
+export { default as About } from "./About.jsx"
+export { default as Reason } from "./Reason.jsx"
+export { default as Contacts } from "./Contacts.jsx"
+export { default as HowItWorks } from "./HowItWorks.jsx"
+export { default as Goal } from "./Goal.jsx"
