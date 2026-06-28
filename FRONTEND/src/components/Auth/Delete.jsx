@@ -3,10 +3,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function AuthDelete(props) {
-  useEffect(() => {
-    fetch(`${props.domain}/csrf/`, { credentials: "include" });
-  }, []);
-
+  
   const navigate = useNavigate();
   const [pass, setPass] = useState("")
   const [msg, setMsg] = useState("This action is permanent and cannot be undone.")
