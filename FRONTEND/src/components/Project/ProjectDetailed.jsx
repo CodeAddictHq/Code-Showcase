@@ -19,7 +19,7 @@ function ProjectDetailed(props) {
           display:"flex", 
           justifyContent:"spaceEvenly"
          }} className={styles.commentMeta}>
-            <span className={styles.commentAuthor}>{val.author}</span>
+            <span className={styles.commentAuthor}>{val.author} said,</span>
             {user.id==val.author_id?
            <div style={{ display: 'inline', gap: '.6rem' }}>
             <button onClick={()=>{

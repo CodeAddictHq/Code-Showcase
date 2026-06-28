@@ -1,47 +1,89 @@
-# Portfolio & Code Sharing Platform
+<div align="center">
 
-> A personal space to share who I am, what I build, and the code I write along the way.
+# 🦊 Adibs.Codes.Weeb
 
-A full-stack web application — part portfolio, part code blog. Visitors can browse projects, read and react to published code snippets, and leave comments. Everything on the site is managed through a custom admin panel without touching the source code.
+**Portfolio + Code Blog** — built with React & Django REST Framework
 
-Built with **React** and **Django REST Framework** as a hands-on learning project.
+### Live Web: [adibscodes.onrender.com](https://adibscodes.onrender.com)
+### Live API: [adibscodes.onrender.com](https://adibscodes.onrender.com)
 
----
-
-## What it does
-
-- **Portfolio** — showcases personal projects
-- **Code sharing** — publish scripts by category (Python, JavaScript, HTML & CSS, etc.) in a blog-style feed
-- **Reactions & comments** — visitors can react (Like, Love, Dislike, Angry) and comment on entries
-- **Dynamic content** — most site text is managed from the admin panel via slugs, no redeployment needed
-- **Authentication** — user registration, login, and session-based auth
+</div>
 
 ---
+
+> ⚠️ **Heads up:** this is hosted on Render's free tier, so both services spin down when idle.
+> Give the frontend ~10s and the API another ~10s to wake up on first visit.
+
+## About
+
+A full-stack web app not only portfolio but also code blog platform .where I can share single-file code snippets, DSA solutions, and other programming write-ups. Users can browse projects, react to and comment on snippets, and everything — text, content, categories — is managed through a custom Django admin panel without touching the source code.
+
+Built as a hands-on learning project with **React** and **Django REST Framework**.
+
+## Features
+
+- **Portfolio** — a personal site to introduce myself
+- **Code Sharing** — blog-style feed of snippets by category (Python, JavaScript, HTML & CSS, etc.)
+- **Projects** — showcase of personal projects
+- **Reactions & Comments** — Like, Love, Dislike, Angry reactions, plus editable comments
+- **Dynamic Content** — most site text is slug-based and editable from the admin panel, no redeploy needed
+- **Authentication** — registration, login, and JWT-based auth
 
 ## Tech Stack
 
-| Layer    | Technology                                                  |
-|----------|-------------------------------------------------------------|
-| Frontend | React (Vite), React Router DOM, Lucide React, Plain CSS     |
-| Backend  | Django, Django REST Framework                               |
-| Database | SQLite3                                                     |
+**Frameworks**
 
----
+- React (Vite)
+- Django
+- Django REST Framework
+
+**Libraries & Plugins**
+
+- React Router DOM
+- Lucide React
+- SimpleJWT
+
+**Database**
+
+- SQLite3
+
+**Servers**
+
+- Nginx
+- Gunicorn
 
 ## Getting Started
-
-**Prerequisites:** Python 3.x, Node.js & npm
 
 ### Backend
 
 ```bash
 cd backend
 python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
+
+# Linux / macOS
+source venv/bin/activate
+
+# Windows
+venv\Scripts\activate
+
 pip install -r requirements.txt
+```
+
+**Database setup**
+
+```bash
 python manage.py migrate
-python manage.py createsuperuser
+python manage.py loaddata data.json
+```
+
+**Run**
+
+```bash
+# Development
 python manage.py runserver
+
+# Production
+gunicorn main.wsgi
 ```
 
 ### Frontend
@@ -49,32 +91,30 @@ python manage.py runserver
 ```bash
 cd frontend
 npm install
-npm run dev
 ```
 
-Frontend → `http://localhost:5173`  
-Backend API → `http://localhost:8000`
+**Run**
 
----
+```bash
+# Development
+npm run dev
 
-## Content Management
+# Build
+npm run build
+```
 
-Site text is slug-based and editable from the Django Admin Panel (`/admin`). Update a content entry by slug and it reflects on the frontend immediately — no code change needed.
+## Dynamic Content
 
----
+Most texts is slug-based and editable from the Django Admin Panel (`/admin`). Update a content entry by its slug, and the frontend reflects the change immediately — no source changes or redeployment required.
 
-## Auth & Deployment Notes
+## Authentication
 
-Session-based authentication works well locally. In production with a separate React frontend and Django backend on different origins, cross-origin cookie handling requires extra configuration (CORS headers, `SameSite`/`Secure` flags, `credentials: 'include'`).
-
-This was handled for this project, but future projects will use **JWT-based auth** to keep cross-origin deployments simpler.
-
----
+JWT authentication via SimpleJWT. Users can register, log in, access protected endpoints, and stay authenticated using JWT tokens.
 
 ## Purpose
 
-Built to learn full-stack development in practice — React architecture, DRF API design, authentication, database modeling, and the real-world challenges of deploying an SPA with a separate backend.
+A learning project to practice React, Django, REST API design, JWT authentication, database modeling, and full-stack deployment.
 
----
+## License
 
-*Personal and educational use.*
+Personal and educational use.
